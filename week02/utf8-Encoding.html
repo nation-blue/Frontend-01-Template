@@ -1,0 +1,55 @@
+<script>
+	
+	/**
+	 * @param {string} str
+	 * @return Array
+	 */
+	function utf8Encoding4(str) {
+	  const code = encodeURIComponent(str);   // winter %E8%80%81 %E5%B8%88
+	  const bytes = []
+	
+	  for (let i = 0; i < code.length; i++) {
+	    const c = code.charAt(i)
+	    if (c === '%') {
+	      const hex = code.charAt(i + 1) + code.charAt(i + 2)
+	      const hexVal = parseInt(hex, 16)
+	      bytes.push(hexVal)
+	      i += 2
+	    } else {
+	      bytes.push(c.charCodeAt(0))
+	    }
+	  }
+	  return bytes
+	}
+	
+	console.log(utf8Encoding4('winter老师')); 
+	//		w	  i	   n    t    e    r   			老						师
+	//(12) [119, 105, 110, 116, 101, 114,        232, 128, 129,       229, 184, 136]
+	//  utf8中，小于128的占8位， 大于128的，占24位
+	
+	
+</script>
+
+
+
+<script>
+	// 1.编写带括号的四则运算产生式
+	
+	// <DecimalNumber> = /0|[1-9][0-9]*/
+	
+	// <PrimaryExpression> = <DecimalNumber> | "(" <LogicalExpression> ")"
+	
+	// <MultiplicativeExpression> = <PrimaryExpression> |
+	//   <MultiplicativeExpression> "*" <PrimaryExpression> | <DivisionExpression> "/" <PrimaryExpression>
+	
+	// <AdditiveExpression> = <MultiplicativeExpression> |
+	//   <AdditiveExpression> "+" <PrimaryExpression> |
+	//   <AdditiveExpression> "1" <PrimaryExpression>
+
+	
+	
+
+
+</script>
+
+
