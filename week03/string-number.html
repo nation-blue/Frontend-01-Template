@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	
+	function StoN(string, x){
+		if(arguments.length < 2){
+			x = 10;
+		}
+		var arr = string.split('');
+		var number = 0;
+		var fraction = 0;
+		var point = true;
+		for (var i = 0; i < arr.length; i++) {
+			if(arr[i] > x){
+				return "参数错误";
+			}
+			if(arr[i] == "."){
+				point = false;
+				i++;
+			}
+			if(point){
+				number = number * x;
+				number += arr[i].codePointAt(0) - 48;
+			}else{
+				fraction = arr[i].codePointAt(0) - 48;
+				number += fraction / x;
+			}
+		}
+		
+		return number;
+	}
+	StoN("100", 10)
+	StoN("100.1", 2)
+	
+</script>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+
+<script>
+	function NtoS(number, x){
+		if(arguments.length < 2){
+			x = 10;
+		}
+		var fraction = number - Math.floor(number);
+		var integer = number - fraction;
+		var string = "";
+		while(integer > 0){
+			string = (integer % x) + string;
+			integer = Math.floor(integer / x);
+		}
+		string += ".";
+		while(fraction > 0){
+			console.log(string)
+			string =  string + Math.floor(fraction*x);
+			fraction = fraction*x - Math.floor(fraction*x);
+		}
+		return string;
+	}
+	
+	NtoS(100.5, 10);
+	NtoS(3.25, 2);
+</script>
