@@ -56,3 +56,32 @@ afoo();
 // 2 3
 ```
 
+```javascript
+async function async1(){
+	console.log("1 start");
+	await async2();
+	console.log("1 end");
+}
+
+async function async2(){
+	console.log("2");
+}
+
+async1();
+
+new Promise(function(resolve){
+	console.log("promise");
+	resolve();
+}).then(function(){
+	console.log("then");
+})
+
+// 1 start
+// 2
+// promise
+
+// 1 end
+
+// then
+
+```
