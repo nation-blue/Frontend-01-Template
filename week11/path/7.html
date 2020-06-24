@@ -1,0 +1,44 @@
+<style>
+    .keywords {
+        color: red;
+    }
+    .punctuator {
+        color: blueviolet;
+    }
+    .whitespace {
+        background-color: pink;
+    }
+    .indentifier {
+        color: lightblue;
+    }
+</style>
+<pre id="container"></pre>
+<script>
+var soure = `
+    function sleep(t){
+        return new Promise(function(resolve){
+            setTimeout(resolve, t)
+        })
+    }
+`
+var r = /(function|new|return)|([ \t\n\r]+)|([a-zA-Z]\w*)|([\(\)\{\}\,\;])/g;
+var d = ['keywords', 'whitespace', 'indentifier', 'punctuator'];
+var token = null;
+var lastIndex = 0;
+
+var container = document.getElementById('container');
+do {
+    lastIndex = r.lastIndex;
+    token = r.exec(soure);
+    if(!token) break;
+    let text = document.createElement('span');
+    text.textContent = token[0];
+
+    for(var i = 1; i < 5; i ++){
+        if(token[i]){
+            text.classList.add(d[i-1])
+        }
+    }
+    container.appendChild(text);
+} while (token);
+</script>
